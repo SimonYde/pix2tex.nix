@@ -3,7 +3,7 @@
   python3,
   fetchPypi,
 }:
-python3.pkgs.buildPythonApplication rec {
+python3.pkgs.buildPythonPackage rec {
   pname = "timm";
   version = "0.5.4";
   pyproject = true;

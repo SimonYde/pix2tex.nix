@@ -4,11 +4,10 @@
   fetchPypi,
   callPackage,
 }:
-
-let 
-  entmax = callPackage ./entmax.nix {};
+let
+  entmax = callPackage ./entmax.nix { };
 in
-python3.pkgs.buildPythonApplication rec {
+python3.pkgs.buildPythonPackage rec {
   pname = "x-transformers";
   version = "0.15.0";
   pyproject = true;
@@ -26,6 +25,7 @@ python3.pkgs.buildPythonApplication rec {
   propagatedBuildInputs = with python3.pkgs; [
     einops
     torch
+    packaging
     entmax
   ];
 

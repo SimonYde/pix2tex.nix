@@ -1,18 +1,16 @@
-{ lib
-, python3
-, fetchFromGitHub
+{
+  lib,
+  python3,
+  fetchPypi,
 }:
-
-python3.pkgs.buildPythonApplication rec {
+python3.pkgs.buildPythonPackage rec {
   pname = "entmax";
-  version = "1.3";
+  version = "1.0";
   pyproject = true;
 
-  src = fetchFromGitHub {
-    owner = "deep-spin";
-    repo = "entmax";
-    rev = "v${version}";
-    hash = "sha256-aJeDPMWdqODaX/7ENn7GBfTEH4cUwzibMdTNm6mXsYE=";
+  src = fetchPypi {
+    inherit pname version;
+    hash = "sha256-HNlyHDSTWCTgccjCCQBxHK1gw9hLyeRmjzt6iHO/Ys8=";
   };
 
   nativeBuildInputs = [
@@ -25,8 +23,8 @@ python3.pkgs.buildPythonApplication rec {
   pythonImportsCheck = [ "entmax" ];
 
   meta = with lib; {
-    description = "The entmax mapping and its loss, a family of sparse softmax alternatives";
-    homepage = "https://github.com/deep-spin/entmax/releases/tag/v1.3";
+    description = "The entmax mapping and its loss, a family of sparse alternatives to softmax";
+    homepage = "https://pypi.org/project/entmax/";
     license = licenses.mit;
     maintainers = with maintainers; [ ];
     mainProgram = "entmax";

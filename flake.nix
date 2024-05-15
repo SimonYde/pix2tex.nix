@@ -9,8 +9,9 @@
     { self, nixpkgs }:
     let
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      pix2tex = pkgs.callPackage ./nix {};
     in
     {
-      packages.x86_64-linux.default = pkgs.callPackage ./nix/pix2tex.nix { };
+      packages.x86_64-linux.default = pix2tex;
     };
 }
