@@ -16,9 +16,26 @@
         "type": "github"
       }
     },
+    "pix2tex-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1694866804,
+        "narHash": "sha256-I3B8eH7zV2zIogDt9znkEzp4EeBjY6NfI4jsl+v/8aM=",
+        "owner": "lukas-blecher",
+        "repo": "LaTeX-OCR",
+        "rev": "1781514fb8c92ea9f94057295fdae0e683f4648e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lukas-blecher",
+        "repo": "LaTeX-OCR",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "pix2tex-src": "pix2tex-src"
       }
     }
   },

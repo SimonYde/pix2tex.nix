@@ -1,17 +1,19 @@
 {
   lib,
-  fetchFromGitHub,
   callPackage,
   pkgs,
+  inputs,
 }:
 let
 
-  python3 = pkgs.python311.override {
-    packageOverrides = (final: prev: {
-      opencv-python-headless = callPackage ./opencv-python-headless.nix {};
-      x-transformers = callPackage ./x-transformers.nix { };
-      timm = callPackage ./timm.nix { };
-    });
+  python3 = pkgs.python312.override {
+    packageOverrides = (
+      final: prev: {
+        opencv-python-headless = callPackage ./opencv-python-headless.nix { };
+        x-transformers = callPackage ./x-transformers.nix { };
+        timm = callPackage ./timm.nix { };
+      }
+    );
   };
 
 in
@@ -20,13 +22,7 @@ python3.pkgs.buildPythonApplication {
   version = "2024-05-15";
   pyproject = true;
 
-  src = fetchFromGitHub {
-    owner = "lukas-blecher";
-    repo = "LaTeX-OCR";
-    rev = "1781514fb8c92ea9f94057295fdae0e683f4648e";
-    hash = "sha256-I3B8eH7zV2zIogDt9znkEzp4EeBjY6NfI4jsl+v/8aM=";
-  };
-
+  src = inputs.pix2tex-src;
   propagatedBuildInputs = with python3.pkgs; [
     setuptools
     wheel
