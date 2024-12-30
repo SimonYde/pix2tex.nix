@@ -19,7 +19,7 @@ let
 in
 python3.pkgs.buildPythonApplication {
   pname = "pix2tex";
-  version = "2024-12-29";
+  version = "2024-05-15";
   pyproject = true;
 
   src = inputs.pix2tex-src;
